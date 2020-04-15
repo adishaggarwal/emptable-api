@@ -586,12 +586,12 @@ async addrow()
 
                     let d = document.getElementById("" + a)!;
                     d!.onclick = () => {
-                        this.deleterow(a);
+                        p1.deleterow(a);
                       }
                    
                     let p = document.getElementById("" + b)!;
                     p!.onclick = () => {
-                        this.editrow(a);
+                        p1.editrow(a);
                       }
                
              }
