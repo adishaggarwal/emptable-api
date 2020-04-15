@@ -1,1 +1,7 @@
-[{"FirstName":"Arman","MiddleName":"deep","LastName":"Singh","Email":"abc@g.com","phoneno":"7897899990","Address":"2402","id":"0","role":"0"},{"FirstName":"Ojasve","MiddleName":"","LastName":"Nanda","Email":"xyz@ab.com","phoneno":9907347897,"Address":"2411","id":1,"role":0},{"FirstName":"jas","MiddleName":"","LastName":"","Email":"xyzb@gmail.com","phoneno":9887347897,"Address":"9999","id":4,"role":2},{"FirstName":"Ross","MiddleName":"","LastName":"Geller","Email":"ab@yahoo.com","phoneno":7894444497,"Address":"3433","id":5,"role":1},{"FirstName":"Roni","MiddleName":"joe","LastName":"johnson","Email":"you@gmail.com","phoneno":9863737282,"Address":"7372","id":6,"role":1},{"FirstName":"","MiddleName":"","LastName":"","Email":"","phoneno":"","Address":"","id":"55","role":"0"}]
+[{"FirstName":"Arman","MiddleName":"deep","LastName":"Singh","Email":"abc@g.com","phoneno":7897899990,"Address":"2402","id":0,"role":1},
+    {"FirstName":"Ojasve","MiddleName":"","LastName":"Nanda","Email":"xyz@ab.com","phoneno":9907347897,"Address":"2411","id":1,"role":0},
+    {"FirstName":"Ajay","MiddleName":"Vir","LastName":"Singh","Email":"abub@g.com","phoneno":7897000000,"Address":"5523","id":2,"role":2},
+    {"FirstName":"Sai","MiddleName":"rai","LastName":"Sethi","Email":"hello@gmail.com","phoneno":7508347897,"Address":"3939","id":3,"role":1},
+    {"FirstName":"jas","MiddleName":"","LastName":"","Email":"xyzb@gmail.com","phoneno":9887347897,"Address":"9999","id":4,"role":2},
+    {"FirstName":"Ross","MiddleName":"","LastName":"Geller","Email":"ab@yahoo.com","phoneno":7894444497,"Address":"3433","id":5,"role":1},
+    {"FirstName":"Roni","MiddleName":"joe","LastName":"johnson","Email":"you@gmail.com","phoneno":9863737282,"Address":"7372","id":6,"role":1}]
