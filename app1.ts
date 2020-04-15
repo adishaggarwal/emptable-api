@@ -283,8 +283,8 @@ editrow(val:any)
                                    
 
                                     var sel=document.getElementById(b)!.getElementsByTagName("td");
-                                    console.log(recordarr[6]);
-                                    sel[7].innerHTML=`<input type="number" placeholder="${imp.ROLES[recordarr[6]]}" disabled>`;
+                                    console.log(recordarr[7]);
+                                    sel[7].innerHTML=`<input type="number" placeholder="${imp.ROLES[recordarr[7]]}" disabled>`;
 
                                     var xx5=document.getElementById(b)!.getElementsByTagName("input")!;
         
@@ -330,8 +330,8 @@ editrow(val:any)
                                 var xx5= document.getElementById(b)!.getElementsByTagName("input")!;
 
                                 var sel=document.getElementById(b)!.getElementsByTagName("td");
-                                console.log(imp.ROLES[recordarr[6]]);
-                                sel[7].innerHTML=`<input type="number" placeholder="${imp.ROLES[recordarr[6]]}" disabled>`;
+                                console.log(imp.ROLES[recordarr[7]]);
+                                sel[7].innerHTML=`<input type="number" placeholder="${imp.ROLES[recordarr[7]]}" disabled>`;
 
                                 
     
