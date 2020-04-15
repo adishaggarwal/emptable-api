@@ -220,7 +220,7 @@ class actions {
                                     xx15.innerHTML = "DELETE";
                                     let b = "row" + fid;
                                     var sel = document.getElementById(b).getElementsByTagName("td");
-                                    console.log(imp.ROLES[recordarr[6]]);
+                                    console.log(recordarr[6]);
                                     sel[7].innerHTML = `<input type="number" placeholder="${imp.ROLES[recordarr[6]]}" disabled>`;
                                     var xx5 = document.getElementById(b).getElementsByTagName("input");
                                     var q5;
