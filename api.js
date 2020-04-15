@@ -1,5 +1,3 @@
-"use strict";
-Object.defineProperty(exports, "__esModule", { value: true });
 let express = require("express");
 let app = express();
 let fs = require('fs');

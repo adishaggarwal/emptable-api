@@ -1,7 +1,10 @@
 import * as imp from "./app2.js";
+import * as valid from "./app3.js";
 let fetchdata = new imp.fetchjsondata();
+let validate = new valid.validation();
 class actions {
     constructor() {
+        this.nrow = 1;
         this.numrows = 0;
         this.temp = [];
         /*
@@ -96,6 +99,7 @@ class actions {
         }
     }
     editrow(val) {
+        console.log(val);
         var fid;
         var yo;
         var kid = 1;
@@ -135,6 +139,7 @@ class actions {
                 document.getElementById("fake").remove();
                 fid = "nosorry";
                 kid = 99;
+                p1.nrow = 1;
             }
         }
         else {
@@ -142,7 +147,6 @@ class actions {
             yo = "" + val + "" + val;
         }
         if (kid == 1) {
-            console.log(document.getElementById("" + fid + "" + fid));
             if (document.getElementById("" + fid + "" + fid).innerHTML == "SAVE") {
                 let recordarr;
                 recordarr = [];
@@ -164,8 +168,9 @@ class actions {
                     }
                     else if (q6 == 7) {
                         let x;
+                        console.log(xs6);
+                        console.log(xs6[0]);
                         x = xs6[0].value;
-                        xe6[7].innerHTML = `<input type="number" placeholder="${imp.ROLES[x]}" >`;
                         recordarr[q6] = x;
                     }
                     else {
@@ -173,68 +178,99 @@ class actions {
                         recordarr[q6] = index.value;
                     }
                 }
-                let newemp = new imp.emp(recordarr[0], recordarr[1], recordarr[2], recordarr[3], recordarr[4], recordarr[5], recordarr[6], recordarr[7]);
-                if (lol == 99) {
-                    fetch(`http://localhost:3000/addnewrow/${recordarr[6]}`, {
-                        method: "post",
-                        headers: { 'Content-Type': 'application/json' },
-                        body: JSON.stringify(newemp)
-                    }).then(res => {
-                        let kalesh1 = document.getElementById("tbody").getElementsByTagName("button");
-                        for (let i = 1; i < kalesh1.length; i = i + 2) {
-                            let num2 = kalesh1[i].id;
-                            let b25 = "" + num2;
-                            let b35 = "" + num2 + "" + num2;
-                            var xx15 = document.getElementById("" + b25);
-                            var xx25 = document.getElementById("" + b35);
-                            if (b35 == "" + fid + "" + fid) {
-                                xx25.innerHTML = "EDIT";
-                                xx15.innerHTML = "DELETE";
-                                let b = "row" + fid;
-                                var xx5 = document.getElementById(b).getElementsByTagName("input");
-                                var q5;
-                                for (q5 = 0; q5 < xx5.length; q5++) {
-                                    var index = xx5[q5];
-                                    index.disabled = true;
-                                }
-                            }
-                            else {
-                                xx15.style.display = "block";
-                                xx25.style.display = "block";
-                            }
-                        }
-                    });
+                let allrows = document.getElementById("tbody").getElementsByTagName("tr");
+                let cells = document.getElementById("row" + fid).getElementsByTagName("td");
+                if (!validate.id(`${recordarr[6]}`, `${allrows}`)) {
+                    cells[6].innerHTML += '<span class="alertspan" style="color:red,display:block">Please fill an unique ID</span>';
                 }
-                else {
-                    fetch(`http://localhost:3000/updateempdata/${fid}`, {
-                        method: "put",
-                        headers: { 'Content-Type': 'application/json' },
-                        body: JSON.stringify(newemp)
-                    }).then(res => {
-                        let kalesh1 = document.getElementById("tbody").getElementsByTagName("button");
-                        for (let i = 1; i < kalesh1.length; i = i + 2) {
-                            let num2 = kalesh1[i].id;
-                            let b25 = "" + num2;
-                            let b35 = "" + num2 + "" + num2;
-                            var xx15 = document.getElementById("" + b25);
-                            var xx25 = document.getElementById("" + b35);
-                            if (b35 == "" + fid + "" + fid) {
-                                xx25.innerHTML = "EDIT";
-                                xx15.innerHTML = "DELETE";
-                                let b = "row" + fid;
-                                var xx5 = document.getElementById(b).getElementsByTagName("input");
-                                var q5;
-                                for (q5 = 0; q5 < xx5.length; q5++) {
-                                    var index = xx5[q5];
-                                    index.disabled = true;
+                if (!validate.phone(`${recordarr[4]}`)) {
+                    cells[4].innerHTML += '<span class="alertspan" style="color:red,display:block">Please fill in valid phone number</span>';
+                }
+                if (!validate.email(`${recordarr[3]}`)) {
+                    cells[3].innerHTML += '<span class="alertspan" style="color:red,display:block">Please fill in valid email</span>';
+                }
+                if (!validate.notempty(`${recordarr[0]}`)) {
+                    cells[0].innerHTML += '<span class="alertspan" style="color:red,display:block">Please enter your First name</span>';
+                }
+                if (!validate.notempty(`${recordarr[2]}`)) {
+                    cells[2].innerHTML += '<span class="alertspan" style="color:red,display:block">Please enter your Last Name</span>';
+                }
+                if (!validate.address(`${recordarr[5]}`)) {
+                    cells[5].innerHTML += '<span class="alertspan" style="color:red,display:block">Please enter your address</span>';
+                }
+                if (validate.id(`${recordarr[6]}`, `${allrows}`) && validate.phone(`${recordarr[4]}`) && validate.email(`${recordarr[3]}`) && validate.notempty(`${recordarr[0]}`) && validate.notempty(`${recordarr[2]}`) && validate.address(`${recordarr[5]}`)) {
+                    let newemp = new imp.emp(recordarr[0], recordarr[1], recordarr[2], recordarr[3], recordarr[4], recordarr[5], recordarr[6], recordarr[7]);
+                    let alerts = document.getElementsByClassName("alertspan");
+                    for (let i = 0; i < alerts.length; i++) {
+                        alerts[i].style.display = "none";
+                    }
+                    if (lol == 99 || p1.nrow == 0) {
+                        p1.nrow = 1;
+                        fetch(`http://localhost:3000/addnewrow/${recordarr[6]}`, {
+                            method: "post",
+                            headers: { 'Content-Type': 'application/json' },
+                            body: JSON.stringify(newemp)
+                        }).then(res => {
+                            let kalesh1 = document.getElementById("tbody").getElementsByTagName("button");
+                            for (let i = 1; i < kalesh1.length; i = i + 2) {
+                                let num2 = kalesh1[i].id;
+                                let b25 = "" + num2;
+                                let b35 = "" + num2 + "" + num2;
+                                var xx15 = document.getElementById("" + b25);
+                                var xx25 = document.getElementById("" + b35);
+                                if (b35 == "" + fid + "" + fid) {
+                                    xx25.innerHTML = "EDIT";
+                                    xx15.innerHTML = "DELETE";
+                                    let b = "row" + fid;
+                                    var sel = document.getElementById(b).getElementsByTagName("td");
+                                    sel[7].innerHTML = `<input type="number" placeholder="${imp.ROLES[recordarr[6]]}" disabled>`;
+                                    var xx5 = document.getElementById(b).getElementsByTagName("input");
+                                    var q5;
+                                    for (q5 = 0; q5 < xx5.length; q5++) {
+                                        var index = xx5[q5];
+                                        index.disabled = true;
+                                    }
+                                }
+                                else {
+                                    xx15.style.display = "block";
+                                    xx25.style.display = "block";
                                 }
                             }
-                            else {
-                                xx15.style.display = "block";
-                                xx25.style.display = "block";
+                        });
+                    }
+                    else {
+                        fetch(`http://localhost:3000/updateempdata/${fid}`, {
+                            method: "put",
+                            headers: { 'Content-Type': 'application/json' },
+                            body: JSON.stringify(newemp)
+                        }).then(res => {
+                            let kalesh1 = document.getElementById("tbody").getElementsByTagName("button");
+                            for (let i = 1; i < kalesh1.length; i = i + 2) {
+                                let num2 = kalesh1[i].id;
+                                let b25 = "" + num2;
+                                let b35 = "" + num2 + "" + num2;
+                                var xx15 = document.getElementById("" + b25);
+                                var xx25 = document.getElementById("" + b35);
+                                if (b35 == "" + fid + "" + fid) {
+                                    xx25.innerHTML = "EDIT";
+                                    xx15.innerHTML = "DELETE";
+                                    let b = "row" + fid;
+                                    var xx5 = document.getElementById(b).getElementsByTagName("input");
+                                    var sel = document.getElementById(b).getElementsByTagName("td");
+                                    sel[7].innerHTML = `<input type="number" placeholder="${imp.ROLES[recordarr[6]]}" disabled>`;
+                                    var q5;
+                                    for (q5 = 0; q5 < xx5.length; q5++) {
+                                        var index = xx5[q5];
+                                        index.disabled = true;
+                                    }
+                                }
+                                else {
+                                    xx15.style.display = "block";
+                                    xx25.style.display = "block";
+                                }
                             }
-                        }
-                    });
+                        });
+                    }
                 }
                 /*  if(lol==99)
                           {
@@ -379,10 +415,10 @@ class actions {
         }
     }
     async addrow() {
-        console.log("welcome");
         alert("Remember to fill a unique ID, else it will not work properly.");
         let kalesh = await document.getElementById("tbody").getElementsByTagName("button");
         let thebody = document.getElementById("tbody");
+        p1.nrow = 0;
         let newlen = kalesh.length;
         let newrow = thebody.insertRow(-1);
         newrow.setAttribute("id", "newnew");
