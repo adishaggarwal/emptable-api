@@ -99,7 +99,6 @@ class actions {
         }
     }
     editrow(val) {
-        console.log(val);
         var fid;
         var yo;
         var kid = 1;
@@ -168,8 +167,6 @@ class actions {
                     }
                     else if (q6 == 7) {
                         let x;
-                        console.log(xs6);
-                        console.log(xs6[0]);
                         x = xs6[0].value;
                         recordarr[q6] = x;
                     }
@@ -223,6 +220,7 @@ class actions {
                                     xx15.innerHTML = "DELETE";
                                     let b = "row" + fid;
                                     var sel = document.getElementById(b).getElementsByTagName("td");
+                                    console.log(imp.ROLES[recordarr[6]]);
                                     sel[7].innerHTML = `<input type="number" placeholder="${imp.ROLES[recordarr[6]]}" disabled>`;
                                     var xx5 = document.getElementById(b).getElementsByTagName("input");
                                     var q5;
@@ -257,6 +255,7 @@ class actions {
                                     let b = "row" + fid;
                                     var xx5 = document.getElementById(b).getElementsByTagName("input");
                                     var sel = document.getElementById(b).getElementsByTagName("td");
+                                    console.log(imp.ROLES[recordarr[6]]);
                                     sel[7].innerHTML = `<input type="number" placeholder="${imp.ROLES[recordarr[6]]}" disabled>`;
                                     var q5;
                                     for (q5 = 0; q5 < xx5.length; q5++) {

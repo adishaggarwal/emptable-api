@@ -121,7 +121,6 @@ create(data:any)
 
 editrow(val:any)
 {
-    console.log(val);
     var fid;
         var yo;
         var kid=1;
@@ -209,8 +208,6 @@ editrow(val:any)
                 else if(q6==7)
                 {
                     let x:any;
-                    console.log(xs6);
-                    console.log(xs6[0]);
                     x = xs6[0].value;
                     recordarr[q6]=x;
                 }
@@ -286,6 +283,7 @@ editrow(val:any)
                                    
 
                                     var sel=document.getElementById(b)!.getElementsByTagName("td");
+                                    console.log(imp.ROLES[recordarr[6]]);
                                     sel[7].innerHTML=`<input type="number" placeholder="${imp.ROLES[recordarr[6]]}" disabled>`;
 
                                     var xx5=document.getElementById(b)!.getElementsByTagName("input")!;
@@ -332,6 +330,7 @@ editrow(val:any)
                                 var xx5= document.getElementById(b)!.getElementsByTagName("input")!;
 
                                 var sel=document.getElementById(b)!.getElementsByTagName("td");
+                                console.log(imp.ROLES[recordarr[6]]);
                                 sel[7].innerHTML=`<input type="number" placeholder="${imp.ROLES[recordarr[6]]}" disabled>`;
 
                                 
