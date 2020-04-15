@@ -283,7 +283,7 @@ editrow(val:any)
                                    
 
                                     var sel=document.getElementById(b)!.getElementsByTagName("td");
-                                    console.log(recordarr[7]);
+                                    console.log(imp.ROLES[recordarr[7]]);
                                     sel[7].innerHTML=`<input type="number" placeholder="${imp.ROLES[recordarr[7]]}" disabled>`;
 
                                     var xx5=document.getElementById(b)!.getElementsByTagName("input")!;
