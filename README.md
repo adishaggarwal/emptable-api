@@ -8,6 +8,9 @@ The data is stored locally in javascript code only i.e no database is used to st
 # TECHNOLOGIES USED
 HTML,CSS,Bootstrap,Typescript,Javascript,Node(REST API)
 
+# AUTHOR
+Adish Aggarwal
+
 # SCREENSHOTS
 
 ![](images/1.JPG)
